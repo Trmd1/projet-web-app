@@ -11,21 +11,23 @@ services:
         image: mysql:latest
         restart: always
         environment:
-        MYSQL_ROOT_PASSWORD: admin
-        MYSQL_DATABASE: database
-        MYSQL_USER: user
-        MYSQL_PASSWORD: user
+            MYSQL_ROOT_PASSWORD: example
+            MYSQL_DATABASE: db_test
+            MYSQL_USER: trmd
+            MYSQL_PASSWORD: trmd
         volumes:
-        - ./inside/mysql:/var/lib/mysql
+            - ./mysql_data:/var/lib/mysql
         ports:
-        - "3306:3306"
+            - "3346:3346"
+
     phpmyadmin:
-        image: phpmyadmin/phpmyadmin:latest
-        restart: always
+        image: phpmyadmin
+        container_name: pma
         depends_on:
-        - db
+            - db
         environment:
-        PMA_HOST: db
-        MYSQL_ROOT_PASSWORD: admin
+              PMA_HOST: db
+              MYSQL_ROOT_PASSWORD: example
+        restart: always
         ports:
-        - "8090:80"
+              - 8085:80
