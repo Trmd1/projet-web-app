@@ -30,5 +30,23 @@ services:
             ME_CONFIG_BASICAUTH: false
 
     load_data:
-        image: dock_file
+        build:
+            context: .
+            dockerfile: ./Dockerfile
+        # image: dock_file
 
+    fastapi:
+        build:
+            context: .
+            dockerfile: ./api/Dockerfile
+        volumes:
+            - ./api/script:/usr/local/api:ro
+        command: uvicorn main:app --host 0.0.0.0
+        working_dir: /usr/local/api
+        ports:
+            - 8000:8000
+            
+        # build:
+        #     context: ""
+        #     dockerfile: ./api/Dockerfile
+# fastapi dev /usr/local/api/main.py && 
