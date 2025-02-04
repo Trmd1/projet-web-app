@@ -29,10 +29,12 @@ services:
             ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
             ME_CONFIG_BASICAUTH: false
 
-    load_data:
-        build:
-            context: .
-            dockerfile: ./Dockerfile
+
+    # décomenter lorsque necessaire :
+    # load_data:
+    #     build:
+    #         context: .
+    #         dockerfile: ./Dockerfile
         # image: dock_file
 
     fastapi:
