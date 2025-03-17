@@ -32,3 +32,11 @@ def search_name(poke_name:str):
     # boolTest = (str.lower(poke_name)==str.lower(collection.find_one({"dex":0},{"_id":0})["name"]))
     # print(boolTest)
     return objet
+
+@app.get("/types/{poke_type}")
+def search_type(poke_type:str):
+    objets = collection.find(
+        {"forms": {"$elemMatch": {"types": str.upper(poke_type)}}},  # Recherche dans la liste
+        {"_id": 0, "name" : 1}
+    )
+    return list(objets)
