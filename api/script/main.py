@@ -10,7 +10,6 @@ client = pymongo.MongoClient("mongodb://root:example@mongo:27017/")
 db = client.Projet
 collection = db.pokemon
 
-
 @app.get("/")
 def read_root():
     return {"Hello": "World"}
