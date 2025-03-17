@@ -10,8 +10,6 @@ client = pymongo.MongoClient("mongodb://root:example@mongo:27017/")
 db = client.Projet
 collection = db.pokemon
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
-
 
 @app.get("/")
 def read_root():
