@@ -12,7 +12,7 @@ collection = db.pokemon
 
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
+    return {"Hello": "VueJS"}
 
 @app.get("/dex/{dex_num}",description="Search a Pokemon by his dex number")
 def search_dex(dex_num:int):
