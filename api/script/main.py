@@ -15,10 +15,6 @@ def read_root():
     return {"Hello": "World"}
 
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Optional[str] = None):
-    return {"item_id": item_id, "q": q}
-
 @app.get("/dex/{dex_num}",description="Search a Pokemon by his dex number")
 def search_dex(dex_num:int):
     objet=collection.find_one({"dex":dex_num},{"_id":0})
