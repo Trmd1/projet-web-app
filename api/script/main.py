@@ -14,7 +14,6 @@ collection = db.pokemon
 def read_root():
     return {"Hello": "World"}
 
-
 @app.get("/dex/{dex_num}",description="Search a Pokemon by his dex number")
 def search_dex(dex_num:int):
     objet=collection.find_one({"dex":dex_num},{"_id":0})
