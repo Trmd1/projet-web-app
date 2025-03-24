@@ -48,13 +48,6 @@ services:
         ports:
             - 8000:8000
             
-    frontend:
-        build: ./frontend
-        volumes:
-            - './frontend:/app'
-            - '/app/node_modules'
-        ports:
-            - 7000:8080
 
         # build:
         #     context: ""
