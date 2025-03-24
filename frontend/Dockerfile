@@ -10,4 +10,6 @@ COPY package.json ./
 COPY package-lock.json ./
 RUN npm install
 
+
+EXPOSE 7000
 CMD ["npm", "run", "serve"]
