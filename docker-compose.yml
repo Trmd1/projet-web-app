@@ -51,9 +51,9 @@ services:
     frontend:
         build:
             context: .
-            dockerfile: ./vue/Dockerfile
+            dockerfile: ./frontend/Dockerfile
         volumes:
-            - './services/frontend:/app'
+            - './frontend:/app'
             - '/app/node_modules'
         ports:
             - 7000:7000
