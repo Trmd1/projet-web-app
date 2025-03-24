@@ -54,7 +54,7 @@ services:
             - './frontend:/app'
             - '/app/node_modules'
         ports:
-            - 7000:7000
+            - 8082:8082
 
         # build:
         #     context: ""
