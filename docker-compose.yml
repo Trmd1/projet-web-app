@@ -48,6 +48,14 @@ services:
         ports:
             - 8000:8000
             
+    frontend:
+        build: ./services/frontend
+        volumes:
+            - './services/frontend:/app'
+            - '/app/node_modules'
+        ports:
+            - 8080:8080
+
         # build:
         #     context: ""
         #     dockerfile: ./api/Dockerfile
