@@ -4,11 +4,22 @@ from typing import Optional
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from pymongo import MongoClient
+from fastapi.middleware.cors import CORSMiddleware
+
 
 app = FastAPI()
 client = pymongo.MongoClient("mongodb://root:example@mongo:27017/")
 db = client.Projet
 collection = db.pokemon
+
+# Configurez CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],  # Remplacez par les origines autorisées
+    allow_credentials=True,
+    allow_methods=["*"],  # Permet toutes les méthodes (GET, POST, etc.)
+    allow_headers=["*"],  # Permet tous les en-têtes
+)
 
 @app.get("/")
 def read_root():
