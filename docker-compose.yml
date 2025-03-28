@@ -1,9 +1,9 @@
-version: '3'
+#version: '3'
 services:
     web:
         image: nginx:latest
         ports:
-            - "8080:80"
+            - "8082:82"
         volumes:
             - ./inside/nginx:/usr/share/nginx/html
 
@@ -47,7 +47,19 @@ services:
         working_dir: /usr/local/api
         ports:
             - 8000:8000
-            
+    vue-app:
+        build:
+            context: ./frontend
+            dockerfile: Dockerfile
+        ports:
+            - "5173:5173"
+        volumes:
+            - ./frontend:/app
+            - /app/node_modules
+        environment:
+            - CHOKIDAR_USEPOLLING=true
+        command: ["npm", "run", "dev", "--", "--host", "0.0.0.0"]         
+
         # build:
         #     context: ""
         #     dockerfile: ./api/Dockerfile
